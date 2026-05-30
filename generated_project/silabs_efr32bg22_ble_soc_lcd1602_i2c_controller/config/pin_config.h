@@ -148,6 +148,22 @@
 // [IADC0]$
 
 // $[I2C0]
+// I2C0 SCL on PD02
+#ifndef I2C0_SCL_PORT                           
+#define I2C0_SCL_PORT                            gpioPortD
+#endif
+#ifndef I2C0_SCL_PIN                            
+#define I2C0_SCL_PIN                             2
+#endif
+
+// I2C0 SDA on PD03
+#ifndef I2C0_SDA_PORT                           
+#define I2C0_SDA_PORT                            gpioPortD
+#endif
+#ifndef I2C0_SDA_PIN                            
+#define I2C0_SDA_PIN                             3
+#endif
+
 // [I2C0]$
 
 // $[EUART0]

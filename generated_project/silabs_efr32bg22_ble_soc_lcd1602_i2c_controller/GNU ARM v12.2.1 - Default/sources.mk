@@ -30,6 +30,7 @@ gecko_sdk_4.4.5/platform/common/src \
 gecko_sdk_4.4.5/platform/common/toolchain/src \
 gecko_sdk_4.4.5/platform/driver/button/src \
 gecko_sdk_4.4.5/platform/driver/debug/src \
+gecko_sdk_4.4.5/platform/driver/i2cspm/src \
 gecko_sdk_4.4.5/platform/driver/leddrv/src \
 gecko_sdk_4.4.5/platform/emdrv/dmadrv/src \
 gecko_sdk_4.4.5/platform/emdrv/gpiointerrupt/src \
@@ -49,6 +50,7 @@ gecko_sdk_4.4.5/platform/service/mpu/src \
 gecko_sdk_4.4.5/platform/service/power_manager/src \
 gecko_sdk_4.4.5/platform/service/sleeptimer/src \
 gecko_sdk_4.4.5/platform/service/system/src \
+gecko_sdk_4.4.5/platform/service/udelay/src \
 gecko_sdk_4.4.5/protocol/bluetooth/src \
 gecko_sdk_4.4.5/util/silicon_labs/silabs_core/memory_manager \
 gecko_sdk_4.4.5/util/third_party/mbedtls/library \

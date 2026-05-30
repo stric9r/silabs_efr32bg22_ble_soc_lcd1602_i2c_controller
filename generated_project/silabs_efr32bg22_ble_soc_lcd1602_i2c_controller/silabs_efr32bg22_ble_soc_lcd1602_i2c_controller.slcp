@@ -42,6 +42,8 @@ component:
 - {id: component_catalog}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
+- instance: [i2c_lcd1602]
+  id: i2cspm
 - {id: in_place_ota_dfu}
 - instance: [vcom]
   id: iostream_usart
@@ -58,6 +60,11 @@ other_file:
 - {path: image/readme_img3.jpg}
 - {path: image/readme_img4.jpg}
 - {path: image/readme_img5.gif}
+template_contribution:
+- {name: memory_ram_start, priority: 0, value: 536870912}
+- {name: memory_ram_size, priority: 0, value: 32768}
+- {name: memory_flash_start, priority: 0, value: 0}
+- {name: memory_flash_size, priority: 0, value: 524288}
 configuration:
 - {name: SL_STACK_SIZE, value: '2752'}
 - {name: SL_HEAP_SIZE, value: '9200'}
