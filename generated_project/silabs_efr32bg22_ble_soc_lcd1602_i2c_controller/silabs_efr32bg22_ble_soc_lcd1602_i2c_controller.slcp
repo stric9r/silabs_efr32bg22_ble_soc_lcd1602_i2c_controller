@@ -42,7 +42,7 @@ component:
 - {id: component_catalog}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
-- instance: [i2c_lcd1602]
+- instance: [pcf8574]
   id: i2cspm
 - {id: in_place_ota_dfu}
 - instance: [vcom]

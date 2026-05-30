@@ -38,10 +38,10 @@ extern "C" {
 #include "sl_i2cspm.h"
 
 
-#define SL_I2CSPM_I2C_LCD1602_PRESENT
+#define SL_I2CSPM_PCF8574_PRESENT
 
 
-extern sl_i2cspm_t *sl_i2cspm_i2c_lcd1602;
+extern sl_i2cspm_t *sl_i2cspm_pcf8574;
 
 void sl_i2cspm_init_instances(void);
 

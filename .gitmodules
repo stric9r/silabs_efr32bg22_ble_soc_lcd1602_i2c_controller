@@ -1,3 +1,6 @@
 [submodule "src/libs/utility_belt"]
 	path = src/libs/utility_belt
 	url = git@github.com:stric9r/utility_belt.git
+[submodule "src/libs/hd44780_pcf8574"]
+	path = src/libs/hd44780_pcf8574
+	url = git@github.com:stric9r/HD44780_PCF8574.git

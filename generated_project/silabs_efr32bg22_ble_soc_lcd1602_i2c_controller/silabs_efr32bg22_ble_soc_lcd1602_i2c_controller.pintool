@@ -4,7 +4,7 @@
     <property object="DefaultMode" propertyId="mode.diagramLocation" value="100, 100"/>
     <property object="GPIO" propertyId="ABModule.selectedRequirement" value="gpio%T%SL_DEBUG%T%sl_debug_swo_config.h"/>
     <property object="GPIO" propertyId="ABPeripheral.included" value="true"/>
-    <property object="I2C0" propertyId="ABModule.selectedRequirement" value="i2c%T%SL_I2CSPM_I2C_LCD1602%T%sl_i2cspm_i2c_lcd1602_config.h"/>
+    <property object="I2C0" propertyId="ABModule.selectedRequirement" value="i2c%T%SL_I2CSPM_PCF8574%T%sl_i2cspm_pcf8574_config.h"/>
     <property object="I2C0" propertyId="ABPeripheral.included" value="true"/>
     <property object="LFXO" propertyId="ABModule.selectedRequirement" value="lfxo%T%SL_DEVICE_INIT_LFXO%T%sl_device_init_lfxo_config.h"/>
     <property object="LFXO" propertyId="ABPeripheral.included" value="true"/>
