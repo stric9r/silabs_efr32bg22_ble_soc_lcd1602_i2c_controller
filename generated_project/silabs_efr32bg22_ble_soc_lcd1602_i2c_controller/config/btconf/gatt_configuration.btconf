@@ -76,46 +76,27 @@
     </characteristic>
   </service>
 
-  <!--Blinky Example-->
-  <service advertise="false" name="Blinky Example" requirement="mandatory" sourceId="" type="primary" uuid="de8a5aac-a99b-c315-0c80-60d4cbb51224">
-
-    <!--LED Control-->
-    <characteristic const="false" id="led_control" name="LED Control" sourceId="" uuid="5b026510-4088-c297-46d8-be6c736a087a">
-      <value length="1" type="hex" variable_length="false">00</value>
-      <properties>
-        <read authenticated="false" bonded="false" encrypted="false"/>
-        <write authenticated="false" bonded="false" encrypted="false"/>
-      </properties>
-    </characteristic>
-
-    <!--Report Button-->
-    <characteristic const="false" id="report_button" name="Report Button" sourceId="" uuid="61a885a4-41c3-60d0-9a53-6d652a70d29c">
-      <value length="1" type="hex" variable_length="false">00</value>
-      <properties>
-        <read authenticated="false" bonded="false" encrypted="false"/>
-        <notify authenticated="false" bonded="false" encrypted="false"/>
-      </properties>
-    </characteristic>
-  </service>
-
   <!--NUS-->
   <service advertise="true" name="NUS" requirement="mandatory" sourceId="" type="primary" uuid="6E400001-B5A3-F393-E0A9-E50E24DCCA9E">
+    <informativeText>Copied the Nordic NUS Service
+
+https://docs.nordicsemi.com/bundle/ncs-2.9.0/page/nrf/libraries/bluetooth/services/nus.html</informativeText>
 
     <!--NUS RX-->
-    <characteristic const="false" name="NUS RX" sourceId="" uuid="6E400002-B5A3-F393-E0A9-E50E24DCCA9E">
+    <characteristic const="false" id="nus_rx" name="NUS RX" sourceId="" uuid="6E400002-B5A3-F393-E0A9-E50E24DCCA9E">
       <description>RX (phone to device)</description>
       <value length="255" type="hex" variable_length="true">00</value>
       <properties>
-        <write authenticated="false" bonded="false" encrypted="false"/>
+        <write_no_response authenticated="false" bonded="false" encrypted="false"/>
       </properties>
     </characteristic>
 
     <!--NUS TX-->
-    <characteristic const="false" name="NUS TX" sourceId="" uuid="6E400003-B5A3-F393-E0A9-E50E24DCCA9E">
+    <characteristic const="false" id="nus_tx" name="NUS TX" sourceId="" uuid="6E400003-B5A3-F393-E0A9-E50E24DCCA9E">
       <description>TX (device to phone)</description>
       <value length="255" type="hex" variable_length="true">00</value>
       <properties>
-        <read authenticated="true" bonded="false" encrypted="false"/>
+        <read authenticated="false" bonded="false" encrypted="false"/>
         <notify authenticated="false" bonded="false" encrypted="false"/>
       </properties>
     </characteristic>

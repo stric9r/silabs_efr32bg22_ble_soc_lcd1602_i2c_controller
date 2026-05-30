@@ -42,9 +42,9 @@ static uint8_t advertising_set_handle = 0xff;
 static bool report_button_flag = false;
 
 // Updates the Report Button characteristic.
-static sl_status_t update_report_button_characteristic(void);
+// Not using - static sl_status_t update_report_button_characteristic(void);
 // Sends notification of the Report Button characteristic.
-static sl_status_t send_report_button_notification(void);
+// Not using - static sl_status_t send_report_button_notification(void);
 
 /**************************************************************************//**
  * Application Init.
@@ -71,11 +71,11 @@ SL_WEAK void app_process_action(void)
 
     report_button_flag = false; // Reset flag
 
-    sc = update_report_button_characteristic();
+    // - Not using - sc = update_report_button_characteristic();
     app_log_status_error(sc);
 
     if (sc == SL_STATUS_OK) {
-      sc = send_report_button_notification();
+      // Not using - sc = send_report_button_notification();
       app_log_status_error(sc);
     }
   }
@@ -126,15 +126,15 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
       app_assert_status(sc);
 
       // Button events can be received from now on.
-      sl_button_enable(SL_SIMPLE_BUTTON_INSTANCE(0));
+      // Not using - sl_button_enable(SL_SIMPLE_BUTTON_INSTANCE(0));
 
       // Check the report button state, then update the characteristic and
       // send notification.
-      sc = update_report_button_characteristic();
-      app_log_status_error(sc);
+      //Not using - sc = update_report_button_characteristic();
+      //app_log_status_error(sc);
 
       if (sc == SL_STATUS_OK) {
-        sc = send_report_button_notification();
+        // Not using - sc = send_report_button_notification();
         app_log_status_error(sc);
       }
       break;
@@ -165,13 +165,15 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
     // This event indicates that the value of an attribute in the local GATT
     // database was changed by a remote GATT client.
     case sl_bt_evt_gatt_server_attribute_value_id:
-      // The value of the gattdb_led_control characteristic was changed.
-      if (gattdb_led_control == evt->data.evt_gatt_server_attribute_value.attribute) {
+      // For debug only, remove led gatt control - replacing with nus rx so can compile
+      if (gattdb_nus_rx == evt->data.evt_gatt_server_attribute_value.attribute) {
         uint8_t data_recv;
         size_t data_recv_len;
 
+        app_log_info("RX got - value changed");
+
         // Read characteristic value.
-        sc = sl_bt_gatt_server_read_attribute_value(gattdb_led_control,
+        sc = sl_bt_gatt_server_read_attribute_value(gattdb_nus_rx,
                                                     0,
                                                     sizeof(data_recv),
                                                     &data_recv_len,
@@ -183,16 +185,17 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
           break;
         }
 
-        // Toggle LED.
-        if (data_recv == 0x00) {
-          sl_led_turn_off(SL_SIMPLE_LED_INSTANCE(0));
-          app_log_info("LED off.\n");
-        } else if (data_recv == 0x01) {
-          sl_led_turn_on(SL_SIMPLE_LED_INSTANCE(0));
-          app_log_info("LED on.\n");
-        } else {
-          app_log_error("Invalid attribute value: 0x%02x\n", (int)data_recv);
-        }
+
+
+        // Just toggle for debug for now,
+        sl_led_toggle(SL_SIMPLE_LED_INSTANCE(0));
+
+        // debug Echo
+        sc = sl_bt_gatt_server_write_attribute_value(gattdb_nus_tx,
+                                                     0,
+                                                     sizeof(data_recv),
+                                                     &data_recv);
+
       }
       break;
 
@@ -200,19 +203,14 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
     // This event occurs when the remote device enabled or disabled the
     // notification.
     case sl_bt_evt_gatt_server_characteristic_status_id:
-      if (gattdb_report_button == evt->data.evt_gatt_server_characteristic_status.characteristic) {
+      if (gattdb_nus_rx == evt->data.evt_gatt_server_characteristic_status.characteristic) {
         // A local Client Characteristic Configuration descriptor was changed in
         // the gattdb_report_button characteristic.
         if (evt->data.evt_gatt_server_characteristic_status.client_config_flags
             & sl_bt_gatt_notification) {
           // The client just enabled the notification. Send notification of the
           // current button state stored in the local GATT table.
-          app_log_info("Notification enabled.");
-
-          sc = send_report_button_notification();
-          app_log_status_error(sc);
-        } else {
-          app_log_info("Notification disabled.\n");
+          app_log_info("RX got! Notification enabled.");
         }
       }
       break;
@@ -245,7 +243,7 @@ void sl_button_on_change(const sl_button_t *handle)
  *
  * Checks the current button state and then writes it into the local GATT table.
  ******************************************************************************/
-static sl_status_t update_report_button_characteristic(void)
+/*static sl_status_t update_report_button_characteristic(void)
 {
   sl_status_t sc;
   uint8_t data_send;
@@ -275,13 +273,14 @@ static sl_status_t update_report_button_characteristic(void)
 
   return sc;
 }
-
+*/
 /***************************************************************************//**
  * Sends notification of the Report Button characteristic.
  *
  * Reads the current button state from the local GATT database and sends it as a
  * notification.
  ******************************************************************************/
+/*
 static sl_status_t send_report_button_notification(void)
 {
   sl_status_t sc;
@@ -307,3 +306,4 @@ static sl_status_t send_report_button_notification(void)
   }
   return sc;
 }
+*/

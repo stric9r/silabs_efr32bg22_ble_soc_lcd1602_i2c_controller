@@ -20,10 +20,10 @@ extern const sli_bt_gattdb_t gattdb;
 #define gattdb_hardware_revision_string       20
 #define gattdb_firmware_revision_string       22
 #define gattdb_system_id                      24
-#define gattdb_led_control                    28
-#define gattdb_report_button                  30
-#define gattdb_ota                            40
-#define gattdb_ota_control                    42
+#define gattdb_nus_rx                         28
+#define gattdb_nus_tx                         31
+#define gattdb_ota                            34
+#define gattdb_ota_control                    36
 
 
 #endif // __GATT_DB_H
