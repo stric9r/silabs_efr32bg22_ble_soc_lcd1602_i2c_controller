@@ -1,0 +1,47 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: efr32bg22_ble_lcd_controller
+label: efr32bg22_ble_lcd_controller
+description: EFR32BG22 BLE controller for HD44780 LCD1602 via PCF8574 I2C backpack.
+sdk: {id: gecko_sdk, version: 4.4.5}
+toolchain_settings: []
+component:
+- {id: EFR32BG22C224F512IM40}
+- {id: brd4108a}
+- {id: app_assert}
+- {id: bluetooth_feature_connection}
+- {id: bluetooth_feature_gatt_server}
+- {id: bluetooth_feature_legacy_advertiser}
+- {id: bluetooth_feature_system}
+- {id: bluetooth_stack}
+- {id: bootloader_interface}
+- {id: bt_post_build}
+- {id: component_catalog}
+- {id: gatt_configuration}
+- {id: gatt_service_device_information}
+- instance: [pcf8574]
+  id: i2cspm
+- {id: mpu}
+- {id: udelay}
+source:
+- {path: src/main.c}
+- {path: src/app.c}
+- {path: src/lcd_protocol.c}
+- {path: src/ble_lcd_service.c}
+include:
+- path: src
+  file_list:
+  - {path: app.h}
+configuration:
+- {name: SL_STACK_SIZE, value: '2752'}
+- {name: SL_HEAP_SIZE, value: '9200'}
+- condition: [psa_crypto]
+  name: SL_PSA_KEY_USER_SLOT_COUNT
+  value: '0'
+template_contribution:
+- {name: memory_ram_start, priority: 0, value: 536870912}
+- {name: memory_ram_size, priority: 0, value: 32768}
+- {name: memory_flash_start, priority: 0, value: 0}
+- {name: memory_flash_size, priority: 0, value: 524288}
+ui_hints:
+  highlight:
+  - {path: config/btconf/gatt_configuration.btconf}
