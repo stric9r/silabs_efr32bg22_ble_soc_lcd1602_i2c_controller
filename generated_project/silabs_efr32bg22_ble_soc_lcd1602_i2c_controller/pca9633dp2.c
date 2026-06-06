@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file           : pca9633dp2.c
-  * @brief          : PCA9633DP2 RGB LED backlight controller driver
+  * @brief          : DFRobot LCD1602 backlight controller driver
   ******************************************************************************
   * SPDX-License-Identifier: MIT
   * Copyright (C) 2026 Stric Roberts.
@@ -25,7 +25,14 @@
   * IN THE SOFTWARE.
   *
   * Protocol reference: DFRobot_RGBLCD1602 C++ driver (MIT), yangfeng@dfrobot.com
-  * Register layout: PCA9633 datasheet, 0xC0>>1 address variant.
+  *
+  * Two hardware variants are supported, selected by the I2C address passed in:
+  *
+  *   0x60 — V1.0 / RGB V1.0: PCA9633DP2
+  *           PWM: B=0x02, G=0x03, R=0x04   LEDOUT=0x08
+  *
+  *   0x6B — V1.1 (blue or RGB): different controller, incompatible register map
+  *           PWM: B=0x04, G=0x05, R=0x06   enable latch at 0x07
   ******************************************************************************
   */
 
@@ -37,13 +44,19 @@
 /* Shares the same I2C peripheral as the AiP31068L LCD. */
 #define pca9633dp2_i2c  sl_i2cspm_pcf8574
 
-/* PCA9633 register addresses */
-#define REG_MODE1   0x00u
-#define REG_MODE2   0x01u
-#define REG_PWM_B   0x02u   /* Blue  channel PWM */
-#define REG_PWM_G   0x03u   /* Green channel PWM */
-#define REG_PWM_R   0x04u   /* Red   channel PWM */
-#define REG_LEDOUT  0x08u   /* LED output state  */
+/* PCA9633 register addresses (0x60 variant) */
+#define PCA_REG_MODE1   0x00u
+#define PCA_REG_MODE2   0x01u
+#define PCA_REG_PWM_B   0x02u
+#define PCA_REG_PWM_G   0x03u
+#define PCA_REG_PWM_R   0x04u
+#define PCA_REG_LEDOUT  0x08u
+
+/* V1.1 controller register addresses (0x6B variant) */
+#define V11_REG_PWM_B   0x04u
+#define V11_REG_PWM_G   0x05u
+#define V11_REG_PWM_R   0x06u
+#define V11_REG_LATCH   0x07u   /* write 0xFF after every colour update */
 
 /* ---------------------------------------------------------------------------
  * Internal helper
@@ -68,17 +81,33 @@ static void write_reg(uint8_t addr, uint8_t reg, uint8_t value)
 
 void pca9633dp2_init(uint8_t addr)
 {
-    write_reg(addr, REG_MODE1,  0x00u);   /* normal mode, no sleep */
-    write_reg(addr, REG_LEDOUT, 0xFFu);   /* all channels: individual PWM */
-    write_reg(addr, REG_MODE2,  0x20u);   /* DMBLNK=1, totem-pole output */
+    if (addr == PCA9633DP2_ADDR_V11) {
+        write_reg(addr, 0x2Fu, 0x00u);
+        write_reg(addr, 0x00u, 0x20u);
+        write_reg(addr, 0x01u, 0x00u);
+        write_reg(addr, 0x02u, 0x01u);
+        write_reg(addr, 0x03u, 0x04u);
+    } else {
+        /* PCA9633: individual PWM mode (LEDOUT bits=10), no group gate */
+        write_reg(addr, PCA_REG_MODE1,  0x00u);
+        write_reg(addr, PCA_REG_MODE2,  0x00u);
+        write_reg(addr, PCA_REG_LEDOUT, 0xAAu);
+    }
     pca9633dp2_set_white(addr);
 }
 
 void pca9633dp2_set_rgb(uint8_t addr, uint8_t r, uint8_t g, uint8_t b)
 {
-    write_reg(addr, REG_PWM_R, r);
-    write_reg(addr, REG_PWM_G, g);
-    write_reg(addr, REG_PWM_B, b);
+    if (addr == PCA9633DP2_ADDR_V11) {
+        write_reg(addr, V11_REG_PWM_B, b);
+        write_reg(addr, V11_REG_PWM_G, g);
+        write_reg(addr, V11_REG_PWM_R, r);
+        write_reg(addr, V11_REG_LATCH, 0xFFu);
+    } else {
+        write_reg(addr, PCA_REG_PWM_R, r);
+        write_reg(addr, PCA_REG_PWM_G, g);
+        write_reg(addr, PCA_REG_PWM_B, b);
+    }
 }
 
 void pca9633dp2_set_white(uint8_t addr)

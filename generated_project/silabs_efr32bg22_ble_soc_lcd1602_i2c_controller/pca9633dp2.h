@@ -36,25 +36,30 @@ extern "C" {
 #include <stdint.h>
 
 /**
- * @defgroup pca9633dp2 PCA9633DP2 RGB Backlight Driver
- * @brief Driver for the PCA9633DP2 I2C RGB LED controller used as the
- *        backlight on the DFRobot Gravity LCD1602 module.
+ * @defgroup pca9633dp2 DFRobot LCD1602 Backlight Driver
+ * @brief Driver for the backlight controller on DFRobot Gravity LCD1602 modules.
  *
- * Uses the same sl_i2cspm_pcf8574 I2C handle as the AiP31068L LCD driver
- * (same physical bus, different address).
+ * Two hardware variants exist, identified by I2C address:
  *
- * Register map (0xC0>>1 = 0x60 address variant, per DFRobot reference):
- *   0x00  MODE1   — operating mode
- *   0x01  MODE2   — output configuration
- *   0x02  PWM0    — Blue channel PWM
- *   0x03  PWM1    — Green channel PWM
- *   0x04  PWM2    — Red channel PWM
- *   0x08  LEDOUT  — LED output state control
+ *   PCA9633DP2_ADDR_V10 (0x60) — V1.0 and RGB V1.0: NXP PCA9633DP2
+ *   PCA9633DP2_ADDR_V11 (0x6B) — V1.1 (blue or RGB): different controller
+ *
+ * Both variants share the same public API; the implementation dispatches
+ * internally based on the address. Pass the correct address constant for your
+ * board revision to pca9633dp2_init() and all subsequent calls.
+ *
+ * Uses the same sl_i2cspm_pcf8574 I2C handle as the AiP31068L LCD driver.
  * @{
  */
 
-/** @brief Default 7-bit I2C address of the PCA9633DP2 (0xC0 >> 1). */
-#define PCA9633DP2_DEFAULT_ADDR  0x60u
+/** @brief 7-bit I2C address for V1.0 and RGB V1.0 modules (PCA9633DP2). */
+#define PCA9633DP2_ADDR_V10      0x60u
+
+/** @brief 7-bit I2C address for V1.1 modules (blue or RGB). */
+#define PCA9633DP2_ADDR_V11      0x6Bu
+
+/** @brief Convenience alias — set to the address matching your board. */
+#define PCA9633DP2_DEFAULT_ADDR  PCA9633DP2_ADDR_V11
 
 /**
  * @brief Initialise the PCA9633DP2 and set backlight to white.

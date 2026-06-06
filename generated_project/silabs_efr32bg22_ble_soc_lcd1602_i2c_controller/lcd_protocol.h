@@ -48,7 +48,7 @@ extern "C" {
  * | 0x02   | CLEAR           | none              |
  * | 0x03   | SET_CURSOR      | reserved (future) |
  * | 0x04   | WRITE_AT        | reserved (future) |
- * | 0xFF   | RAW             | bytes to PCF8574  |
+ * | 0xFF   | RAW             | reserved (future) |
  *
  * WRITE_LINE1 and WRITE_LINE2 pad the line to 16 characters with spaces,
  * clearing any previous content without requiring an explicit CLEAR first.

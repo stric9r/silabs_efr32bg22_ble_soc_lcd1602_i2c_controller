@@ -36,6 +36,11 @@
 *.x86_64
 *.hex
 
+# Embedded firmware binaries
+*.axf
+*.bin
+*.s37
+
 # Debug files
 *.dSYM/
 *.su
