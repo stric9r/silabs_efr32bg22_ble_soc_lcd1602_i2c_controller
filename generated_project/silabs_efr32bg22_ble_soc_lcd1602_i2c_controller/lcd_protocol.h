@@ -37,7 +37,7 @@ extern "C" {
 
 /**
  * @defgroup lcd_protocol LCD Wire Protocol
- * @brief NUS RX packet parser that dispatches to the HD44780 driver.
+ * @brief NUS RX packet parser that dispatches to the AiP31068L / LCD1602 driver.
  *
  * Wire format: byte[0] = command opcode, byte[1..n] = payload.
  *

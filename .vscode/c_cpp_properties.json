@@ -29,7 +29,6 @@
                 "${workspaceFolder}/project/config",
                 "${workspaceFolder}/project/config/btconf",
                 "${workspaceFolder}/project/autogen",
-                "${workspaceFolder}/project/libs/hd44780_pcf8574/lib/inc",
                 "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/autogen",
                 "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/config",
                 "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/config/btconf",
@@ -75,7 +74,6 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}/project/src",
-                    "${workspaceFolder}/project/libs/hd44780_pcf8574/lib",
                     "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/autogen",
                     "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5"
                 ],

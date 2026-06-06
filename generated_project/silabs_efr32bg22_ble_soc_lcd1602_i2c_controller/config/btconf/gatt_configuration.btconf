@@ -7,11 +7,10 @@
     <informativeText>Abstract: The generic_access service contains generic information about the device. All available Characteristics are readonly. </informativeText>
 
     <!--Device Name-->
-    <characteristic const="false" id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
-      <value length="14" type="utf-8" variable_length="false">Blinky Example</value>
+    <characteristic const="true" id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
+      <value length="0" type="utf-8" variable_length="false">LCD 1602 I2C Controller</value>
       <properties>
         <read authenticated="false" bonded="false" encrypted="false"/>
-        <write authenticated="false" bonded="false" encrypted="false"/>
       </properties>
     </characteristic>
 

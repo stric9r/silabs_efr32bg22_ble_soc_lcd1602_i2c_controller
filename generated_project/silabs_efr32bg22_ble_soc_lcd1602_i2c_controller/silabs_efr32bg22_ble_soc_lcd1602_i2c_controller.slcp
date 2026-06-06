@@ -22,9 +22,6 @@ source:
 - {path: src/ble_node.c}
 - {path: lcd/ble_lcd_service.c}
 - {path: lcd/lcd_protocol.c}
-- {path: libs/hd44780_pcf8574/lib/src/hd44780.c}
-- {path: libs/hd44780_pcf8574/lib/src/examples/silabs/gecko_sdk/delay.c}
-- {path: libs/hd44780_pcf8574/lib/src/examples/silabs/gecko_sdk/pcf8574_i2c.c}
 tag: [prebuilt_demo, 'hardware:rf:band:2400', 'hardware:component:button:1+', 'hardware:!shared:button:led',
   'hardware:component:led:1+']
 include:
@@ -36,8 +33,6 @@ include:
   file_list:
   - {path: ble_lcd_service.h}
   - {path: lcd_protocol.h}
-- path: libs/hd44780_pcf8574/lib/inc
-- path: libs/hd44780_pcf8574/lib/inc/implement
 sdk: {id: gecko_sdk, version: 4.4.5}
 toolchain_settings: []
 component:

@@ -38,7 +38,6 @@ generated_project/
     ble_lcd_service.c / .h    NUS RX dispatch
     delay.c                   Microsecond delay (sl_udelay)
     libs/
-      hd44780_pcf8574/        Legacy submodule (delay.h only, to be removed)
       utility_belt/           AI/tooling helpers
 doc/
   dfrobot_gravity_lcd1602.pdf Hardware datasheet
