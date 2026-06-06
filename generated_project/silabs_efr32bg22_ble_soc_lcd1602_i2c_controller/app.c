@@ -13,6 +13,7 @@
 #include "app.h"
 #include "lcd1602.h"
 #include "pca9633dp2.h"
+#include "lcd_protocol.h"
 
 void app_init(void)
 {
@@ -26,4 +27,5 @@ void app_init(void)
 
 void app_process_action(void)
 {
+    lcd_protocol_service();
 }
