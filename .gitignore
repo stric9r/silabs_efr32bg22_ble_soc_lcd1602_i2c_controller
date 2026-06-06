@@ -41,6 +41,10 @@
 *.bin
 *.s37
 
+# Simplicity Studio generated/scratch directories
+.uceditor/
+trashed_modified_files/
+
 # Debug files
 *.dSYM/
 *.su

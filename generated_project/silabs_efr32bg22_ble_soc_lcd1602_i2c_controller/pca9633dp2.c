@@ -41,8 +41,8 @@
 #include "em_i2c.h"
 #include "sl_i2cspm_instances.h"
 
-/* Shares the same I2C peripheral as the AiP31068L LCD. */
-#define pca9633dp2_i2c  sl_i2cspm_pcf8574
+/* Shares the sl_i2cspm_lcd1602 bus with the AiP31068L LCD controller. */
+#define pca9633dp2_i2c  sl_i2cspm_lcd1602
 
 /* PCA9633 register addresses (0x60 variant) */
 #define PCA_REG_MODE1   0x00u

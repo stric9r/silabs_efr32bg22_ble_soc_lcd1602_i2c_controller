@@ -48,7 +48,7 @@ extern "C" {
  * internally based on the address. Pass the correct address constant for your
  * board revision to pca9633dp2_init() and all subsequent calls.
  *
- * Uses the same sl_i2cspm_pcf8574 I2C handle as the AiP31068L LCD driver.
+ * Uses the sl_i2cspm_lcd1602 I2C handle, shared with the AiP31068L LCD driver.
  * @{
  */
 
