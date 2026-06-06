@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /home/stric9r/SimplicityStudio *)",
+      "Bash(find /home/stric9r/SimplicityStudio-5 *)",
+      "Bash(grep * /home/stric9r/SimplicityStudio *)",
+      "Bash(grep -r * /home/stric9r/SimplicityStudio *)",
+      "Bash(grep -rn * /home/stric9r/SimplicityStudio *)",
+      "Bash(which arm-none-eabi-gcc *)",
+      "Bash(git submodule *)"
+    ]
+  }
+}

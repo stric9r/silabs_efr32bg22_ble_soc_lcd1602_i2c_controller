@@ -1,55 +1,22 @@
 /**
   ******************************************************************************
-  * @file           : app.c
-  * @brief          : BLE application — event glue and hardware initialisation
+  * @file           : ble_node.c
+  * @brief          : BLE node — advertising management and GATT event dispatch
   ******************************************************************************
   * SPDX-License-Identifier: MIT
   * Copyright (C) 2026 Stric Roberts.
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a
-  * copy of this software and associated documentation files (the "Software"),
-  * to deal in the Software without restriction, including without limitation
-  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-  * and/or sell copies of the Software, and to permit persons to whom the
-  * Software is furnished to do so, subject to the following conditions:
-  *
-  * The above copyright notice and this permission notice shall be included in
-  * all copies or substantial portions of the Software.
-  *
-  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-  * IN THE SOFTWARE.
   ******************************************************************************
   */
 
-#include "em_common.h"
 #include "app_assert.h"
 #include "sl_bluetooth.h"
 #include "gatt_db.h"
-#include "app.h"
-#include "implement/pcf8574_i2c.h"
-#include "implement/delay.h"
-#include "hd44780.h"
+#include "ble_node.h"
 #include "ble_lcd_service.h"
 
 static uint8_t advertising_set_handle = 0xFFu;
 
-void app_init(void)
-{
-    int lcd_init_result;
-
-    pcf8574_init();
-    delay_init();
-
-    lcd_init_result = hd44780_init(PCF8574_DEFAULT_ADDR);
-    app_assert(0 == lcd_init_result, "hd44780_init failed\n");
-}
-
-void app_process_action(void)
+void ble_node_init(void)
 {
 }
 

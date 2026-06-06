@@ -27,32 +27,31 @@
   */
 
 #include <stdbool.h>
+#include <stddef.h>
 #include "lcd_protocol.h"
-#include "hd44780.h"
-#include "implement/pcf8574_i2c.h"
+#include "lcd1602.h"
 
 #define LINE_MAX_COLS  16u
 
-static void write_padded_line(uint8_t addr,
-                               uint8_t const *p_data,
+static void write_padded_line(uint8_t const *p_data,
                                uint16_t data_len,
                                uint8_t row)
 {
     uint16_t i;
     uint16_t write_len;
 
-    (void)hd44780_set_cursor(addr, 0u, row);
+    (void)lcd1602_set_cursor(0u, row);
 
     write_len = (data_len < LINE_MAX_COLS) ? data_len : LINE_MAX_COLS;
 
     for (i = 0u; i < write_len; i++)
     {
-        hd44780_write_char(addr, (char)p_data[i]);
+        lcd1602_write_char((char)p_data[i]);
     }
 
     for (; i < LINE_MAX_COLS; i++)
     {
-        hd44780_write_char(addr, ' ');
+        lcd1602_write_char(' ');
     }
 }
 
@@ -60,7 +59,6 @@ lcd_proto_result_t lcd_protocol_process(uint8_t const *p_buf, uint16_t len)
 {
     lcd_proto_result_t result;
     bool b_status;
-    uint16_t i;
 
     b_status = (NULL != p_buf) && (0u < len);
 
@@ -69,30 +67,22 @@ lcd_proto_result_t lcd_protocol_process(uint8_t const *p_buf, uint16_t len)
         switch ((lcd_cmd_t)p_buf[0])
         {
             case LCD_CMD_WRITE_LINE1:
-                write_padded_line(PCF8574_DEFAULT_ADDR,
-                                  p_buf + 1u,
+                write_padded_line(p_buf + 1u,
                                   (uint16_t)(len - 1u),
                                   0u);
                 break;
 
             case LCD_CMD_WRITE_LINE2:
-                write_padded_line(PCF8574_DEFAULT_ADDR,
-                                  p_buf + 1u,
+                write_padded_line(p_buf + 1u,
                                   (uint16_t)(len - 1u),
                                   1u);
                 break;
 
             case LCD_CMD_CLEAR:
-                hd44780_clear(PCF8574_DEFAULT_ADDR);
+                lcd1602_clear();
                 break;
 
             case LCD_CMD_RAW:
-                for (i = 1u; i < len; i++)
-                {
-                    pcf8574_write(PCF8574_DEFAULT_ADDR, p_buf[i]);
-                }
-                break;
-
             case LCD_CMD_SET_CURSOR:
             case LCD_CMD_WRITE_AT:
             default:

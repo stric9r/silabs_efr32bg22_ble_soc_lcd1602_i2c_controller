@@ -1,0 +1,87 @@
+{
+    "configurations": [
+        {
+            "name": "EFR32BG22",
+            "compilerPath": "/home/stric9r/SimplicityStudio-5/SimplicityStudio_v5/developer/toolchains/gnu_arm/12.2.rel1_2023.7/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mcpu=cortex-m33",
+                "-mthumb"
+            ],
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm",
+            "defines": [
+                "EFR32BG22C224F512IM40=1",
+                "SL_APP_PROPERTIES=1",
+                "BOOTLOADER_APPLOADER=1",
+                "HARDWARE_BOARD_DEFAULT_RF_BAND_2400=1",
+                "HARDWARE_BOARD_SUPPORTS_1_RF_BAND=1",
+                "HARDWARE_BOARD_SUPPORTS_RF_BAND_2400=1",
+                "HFXO_FREQ=38400000",
+                "SL_BOARD_NAME=\"BRD4108A\"",
+                "SL_BOARD_REV=\"A03\"",
+                "SL_COMPONENT_CATALOG_PRESENT=1",
+                "SL_RAIL_LIB_MULTIPROTOCOL_SUPPORT=0",
+                "SLI_RADIOAES_REQUIRES_MASKING=1"
+            ],
+            "includePath": [
+                "${workspaceFolder}/project/src",
+                "${workspaceFolder}/project/config",
+                "${workspaceFolder}/project/config/btconf",
+                "${workspaceFolder}/project/autogen",
+                "${workspaceFolder}/project/libs/hd44780_pcf8574/lib/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/autogen",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/config",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/config/btconf",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/app/bluetooth/common/gatt_service_device_information",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/app/common/util/app_assert",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/hardware/board/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/hardware/driver/configuration_over_swo/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/bootloader",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/bootloader/api",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/CMSIS/Core/Include",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/common/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/common/toolchain/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/Device/SiliconLabs/EFR32BG22/Include",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/driver/i2cspm/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/emdrv/common/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/emdrv/dmadrv/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/emdrv/gpiointerrupt/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/emdrv/nvm3/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/emlib/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/chip/efr32/efr32xg2x",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/common",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/plugin/pa-conversions",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/plugin/pa-conversions/efr32xg22",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/plugin/rail_util_power_manager_init",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/radio/rail_lib/protocol/ble",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/se_manager/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/sl_mbedtls_support/config",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/sl_mbedtls_support/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/sl_protocol_crypto/src",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/sl_psa_driver/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/device_init/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/mpu/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/power_manager/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/sleeptimer/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/system/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/service/udelay/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/protocol/bluetooth/bgstack/ll/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/protocol/bluetooth/inc",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/util/silicon_labs/silabs_core/memory_manager",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/util/third_party/mbedtls/include",
+                "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5/platform/security/sl_component/sl_cryptoacc_library/include"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/project/src",
+                    "${workspaceFolder}/project/libs/hd44780_pcf8574/lib",
+                    "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/autogen",
+                    "${workspaceFolder}/generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/gecko_sdk_4.4.5"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}
