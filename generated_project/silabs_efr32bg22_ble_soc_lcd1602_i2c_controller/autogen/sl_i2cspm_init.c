@@ -31,34 +31,34 @@
 #include "sl_i2cspm.h"
 #include "em_cmu.h"
 // Include instance config 
-#include "sl_i2cspm_pcf8574_config.h"
+#include "sl_i2cspm_lcd1602_config.h"
 
-sl_i2cspm_t *sl_i2cspm_pcf8574 = SL_I2CSPM_PCF8574_PERIPHERAL;
+sl_i2cspm_t *sl_i2cspm_lcd1602 = SL_I2CSPM_LCD1602_PERIPHERAL;
 
-#if SL_I2CSPM_PCF8574_SPEED_MODE == 0
-#define SL_I2CSPM_PCF8574_HLR i2cClockHLRStandard
-#define SL_I2CSPM_PCF8574_MAX_FREQ I2C_FREQ_STANDARD_MAX
-#elif SL_I2CSPM_PCF8574_SPEED_MODE == 1
-#define SL_I2CSPM_PCF8574_HLR i2cClockHLRAsymetric
-#define SL_I2CSPM_PCF8574_MAX_FREQ I2C_FREQ_FAST_MAX
-#elif SL_I2CSPM_PCF8574_SPEED_MODE == 2
-#define SL_I2CSPM_PCF8574_HLR i2cClockHLRFast
-#define SL_I2CSPM_PCF8574_MAX_FREQ I2C_FREQ_FASTPLUS_MAX
+#if SL_I2CSPM_LCD1602_SPEED_MODE == 0
+#define SL_I2CSPM_LCD1602_HLR i2cClockHLRStandard
+#define SL_I2CSPM_LCD1602_MAX_FREQ I2C_FREQ_STANDARD_MAX
+#elif SL_I2CSPM_LCD1602_SPEED_MODE == 1
+#define SL_I2CSPM_LCD1602_HLR i2cClockHLRAsymetric
+#define SL_I2CSPM_LCD1602_MAX_FREQ I2C_FREQ_FAST_MAX
+#elif SL_I2CSPM_LCD1602_SPEED_MODE == 2
+#define SL_I2CSPM_LCD1602_HLR i2cClockHLRFast
+#define SL_I2CSPM_LCD1602_MAX_FREQ I2C_FREQ_FASTPLUS_MAX
 #endif
 
-I2CSPM_Init_TypeDef init_pcf8574 = { 
-  .port = SL_I2CSPM_PCF8574_PERIPHERAL,
-  .sclPort = SL_I2CSPM_PCF8574_SCL_PORT,
-  .sclPin = SL_I2CSPM_PCF8574_SCL_PIN,
-  .sdaPort = SL_I2CSPM_PCF8574_SDA_PORT,
-  .sdaPin = SL_I2CSPM_PCF8574_SDA_PIN,
+I2CSPM_Init_TypeDef init_lcd1602 = { 
+  .port = SL_I2CSPM_LCD1602_PERIPHERAL,
+  .sclPort = SL_I2CSPM_LCD1602_SCL_PORT,
+  .sclPin = SL_I2CSPM_LCD1602_SCL_PIN,
+  .sdaPort = SL_I2CSPM_LCD1602_SDA_PORT,
+  .sdaPin = SL_I2CSPM_LCD1602_SDA_PIN,
   .i2cRefFreq = 0,
-  .i2cMaxFreq = SL_I2CSPM_PCF8574_MAX_FREQ,
-  .i2cClhr = SL_I2CSPM_PCF8574_HLR
+  .i2cMaxFreq = SL_I2CSPM_LCD1602_MAX_FREQ,
+  .i2cClhr = SL_I2CSPM_LCD1602_HLR
 };
 
 void sl_i2cspm_init_instances(void)
 {
   CMU_ClockEnable(cmuClock_GPIO, true);
-  I2CSPM_Init(&init_pcf8574);
+  I2CSPM_Init(&init_lcd1602);
 }

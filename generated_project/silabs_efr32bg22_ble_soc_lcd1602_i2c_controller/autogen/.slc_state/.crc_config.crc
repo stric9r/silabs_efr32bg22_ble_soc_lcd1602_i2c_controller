@@ -21,6 +21,7 @@ sl_device_init_hfxo_config.h=1615074698
 sl_device_init_lfrco_config.h=545802331
 sl_device_init_lfxo_config.h=6303949
 sl_i2cspm_i2c_lcd1602_config.h=-452700627
+sl_i2cspm_lcd1602_config.h=1349776114
 sl_i2cspm_pcf8574_config.h=-1330756074
 sl_iostream_usart_vcom_config.h=-1287816936
 sl_mbedtls_config.h=-887671824
