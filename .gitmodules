@@ -1,3 +1,6 @@
 [submodule "generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/utility_belt"]
 	path = generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/utility_belt
 	url = git@github.com:stric9r/utility_belt.git
+[submodule "generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib"]
+	path = generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib
+	url = git@github.com:stric9r/lcd1602_aip31068l_pca9633dp2_lib.git

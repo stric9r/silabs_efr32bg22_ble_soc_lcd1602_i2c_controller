@@ -10,12 +10,14 @@ commands to write text, control the cursor and backlight, load custom characters
 
 - [Project README](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/readme.md) —
   full hardware, driver, and build documentation
-- [lcd1602.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/lcd1602.h) —
+- [lcd1602.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib/inc/lcd1602.h) —
   application-level LCD API
-- [aip31068l.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/aip31068l.h) —
-  AiP31068L I2C transport driver
-- [pca9633dp2.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/pca9633dp2.h) —
+- [aip31068l.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib/inc/aip31068l.h) —
+  AiP31068L I2C-native LCD controller driver
+- [pca9633dp2.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib/inc/pca9633dp2.h) —
   PCA9633DP2 RGB backlight driver
+- [lcd_intfc.h](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/libs/lcd1602_aip31068l_pca9633dp2_lib/inc/implement/lcd_intfc.h) —
+  platform-agnostic bus interface (implement to port to a new target)
 
 ## Hardware
 
@@ -95,15 +97,42 @@ the device resumes advertising immediately when it finishes.
 ```
 generated_project/
   silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/
-    app.c / app.h             BLE init and hardware setup
-    lcd1602.c / lcd1602.h     Clean LCD application API
-    aip31068l.c / aip31068l.h AiP31068L I2C native LCD driver
-    pca9633dp2.c / pca9633dp2.h PCA9633DP2 RGB backlight driver
-    lcd_protocol.c / .h       BLE NUS command parser
-    ble_lcd_service.c / .h    NUS RX dispatch
-    delay.c                   Microsecond delay (sl_udelay)
+    app.c / app.h              BLE init and hardware setup
+    lcd_protocol.c / .h        BLE NUS command parser
+    ble_lcd_service.c / .h     NUS RX dispatch
     libs/
-      utility_belt/           AI/tooling helpers
+      lcd1602_aip31068l_pca9633dp2_lib/   ← LCD library submodule
+        inc/
+          lcd1602.h            Application API (start here)
+          aip31068l.h          AiP31068L driver header
+          pca9633dp2.h         PCA9633DP2 backlight driver header
+          implement/
+            lcd_intfc.h        Bus interface (implement to port)
+            delay.h            Delay interface (implement to port)
+        src/
+          lcd1602.c            Application API implementation
+          aip31068l.c          AiP31068L driver
+          pca9633dp2.c         PCA9633DP2 driver
+        examples/
+          silabs/gecko_sdk/
+            lcd_intfc.c        Silicon Labs I2C implementation
+            delay.c            Silicon Labs delay implementation
+      utility_belt/            AI/tooling helpers
 doc/
-  dfrobot_gravity_lcd1602.pdf Hardware datasheet
+  dfrobot_gravity_lcd1602.pdf  Hardware datasheet
 ```
+
+### Simplicity Studio include paths and source files
+
+After cloning, add the following to the Simplicity Studio project configuration:
+
+**Include paths:**
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/inc`
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/inc/implement`
+
+**Source files:**
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/src/lcd1602.c`
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/src/aip31068l.c`
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/src/pca9633dp2.c`
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/examples/silabs/gecko_sdk/lcd_intfc.c`
+- `libs/lcd1602_aip31068l_pca9633dp2_lib/examples/silabs/gecko_sdk/delay.c`
