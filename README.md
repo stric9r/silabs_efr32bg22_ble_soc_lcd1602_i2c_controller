@@ -6,6 +6,8 @@ Silicon Labs EFR32BG22 SoC.
 A BLE central device connects via the **Nordic UART Service (NUS)** and sends TLV-framed
 commands to write text, control the cursor and backlight, load custom characters, and more.
 
+Example of it running on [Youtube](https://www.youtube.com/shorts/DuAswd0oLW4).
+
 ## Quick links
 
 - [Project README](generated_project/silabs_efr32bg22_ble_soc_lcd1602_i2c_controller/readme.md) —
