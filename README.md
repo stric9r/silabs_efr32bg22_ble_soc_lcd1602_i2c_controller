@@ -130,9 +130,14 @@ After cloning, add the following to the Simplicity Studio project configuration:
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/inc`
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/inc/implement`
 
-**Source files:**
+**Source files (compiled directly from the submodule):**
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/src/lcd1602.c`
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/src/aip31068l.c`
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/src/pca9633dp2.c`
+
+**Platform glue (copy into the project root, do not reference in place):**
+`libs/lcd1602_aip31068l_pca9633dp2_lib/examples/` is reference-only and must be excluded from
+the build by the project's `.cproject` source filter. Copy these two files into the project
+root and let Simplicity Studio compile them from there:
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/examples/silabs/gecko_sdk/lcd_intfc.c`
 - `libs/lcd1602_aip31068l_pca9633dp2_lib/examples/silabs/gecko_sdk/delay.c`

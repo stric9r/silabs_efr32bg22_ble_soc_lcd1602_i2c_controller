@@ -8,11 +8,12 @@
   ******************************************************************************
   */
 
+#include "ble_node.h"
 #include "app_assert.h"
 #include "sl_bluetooth.h"
 #include "gatt_db.h"
-#include "ble_node.h"
 #include "ble_lcd_service.h"
+#include "backlight_ctrl.h"
 
 static uint8_t advertising_set_handle = 0xFFu;
 
@@ -59,9 +60,12 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
             break;
 
         case sl_bt_evt_connection_opened_id:
+            backlight_ctrl_on_connection_opened();
             break;
 
         case sl_bt_evt_connection_closed_id:
+            backlight_ctrl_on_connection_closed();
+
             sc = sl_bt_legacy_advertiser_generate_data(
                 advertising_set_handle,
                 sl_bt_advertiser_general_discoverable);
